@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Iris Species Prediction</title>
+</head>
+<body>
+    <h1>Iris Species Prediction</h1>
+    <form action="/predict" method="post">
+        <label for="sepal_length">Sepal Length:</label><br>
+        <input type="number" step="0.01" id="sepal_length" name="sepal_length"><br>
+        <label for="sepal_width">Sepal Width:</label><br>
+        <input type="number" step="0.01" id="sepal_width" name="sepal_width"><br>
+        <label for="petal_length">Petal Length:</label><br>
+        <input type="number" step="0.01" id="petal_length" name="petal_length"><br>
+        <label for="petal_width">Petal Width:</label><br>
+        <input type="number" step="0.01" id="petal_width" name="petal_width"><br><br>
+        <input type="submit" value="Predict">
+    </form>
+    <h2 id="result"></h2>
+</body>
+<script>
+    const form = document.querySelector('form');
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const response = await fetch('/predict', {
+            method: 'POST',
+            body: formData
+        });
+        const data = await response.json();
+        document.getElementById('result').textContent = `Prediction: ${data.prediction}`;
+    });
+</script>
+</html>
