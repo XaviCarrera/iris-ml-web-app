@@ -19,13 +19,13 @@ This is a simple web application that predicts Iris species using a Machine Lear
 
 3. Train the model
     ```bash
-    python train_model.py
+    python3 train_model.py
     ```
 
 4. Run the application
     ```bash
     cd app
-    python app.py
+    python3 app.py
     ```
 
 5. Open your browser and go to `http://127.0.0.1:5000/`
