@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify
 import pickle
 import numpy as np
 
@@ -10,11 +10,11 @@ with open('models/model.pkl', 'rb') as file:
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return 'Success'
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    data = [float(x) for x in request.form.values()]
+    data = request.json['data']
     final_input = np.array(data).reshape(1, -1)
     prediction = model.predict(final_input)
     output = prediction[0]
