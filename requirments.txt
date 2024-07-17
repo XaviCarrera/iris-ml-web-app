@@ -1,5 +1,0 @@
-flask
-pandas
-seaborn
-scikit-learn
-streamlit
